@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Globalization;
@@ -58,7 +58,7 @@ namespace Statistics
 					? (IQueryBuilder) new SqliteQueryCreator()
 					: new MysqlQueryCreator());
 
-			creator.EnsureExists(table);
+			creator.EnsureTableStructure(table);
 		}
 
 		internal void EnsureExists(params SqlTable[] tables)
@@ -281,7 +281,7 @@ namespace Statistics
 				}
 				catch (MySqlException x)
 				{
-					Log.Error(x.ToString());
+					LogError(x.ToString());
 					throw new Exception("MySQL not setup correctly.");
 				}
 			}
@@ -291,5 +291,10 @@ namespace Statistics
 			var db = new Database(idb);
 			return db;
 		}
-	}
+
+        private static void LogError(string v)
+        {
+            throw new NotImplementedException();
+        }
+    }
 }
