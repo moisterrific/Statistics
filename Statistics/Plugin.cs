@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
@@ -12,7 +12,7 @@ using TShockAPI.Hooks;
 
 namespace Statistics
 {
-	[ApiVersion(1, 17)]
+	[ApiVersion(1, 22)]
 	public class Statistics : TerrariaPlugin
 	{
 		internal static Database tshock;
@@ -30,7 +30,7 @@ namespace Statistics
 
 		public override string Author
 		{
-			get { return "White"; }
+			get { return "White, Jewsus Updates"; }
 		}
 
 		public override string Description
@@ -108,7 +108,7 @@ namespace Statistics
 			foreach (var player in TShock.Players)
 				if (player != null && player.ConnectionAlive && player.RealPlayer && player.IsLoggedIn)
 				{
-					database.UpdateTime(player.UserID, TimeCache[player.Index]);
+					database.UpdateTime(player.User.ID, TimeCache[player.Index]);
 					TimeCache[player.Index] = 0;
 				}
 		}
@@ -122,7 +122,7 @@ namespace Statistics
 
 		private static void PlayerPostLogin(PlayerPostLoginEventArgs args)
 		{
-			database.CheckUpdateInclude(args.Player.UserID);
+			database.CheckUpdateInclude(args.Player.User.ID);
 		}
 
 		private static void GreetPlayer(GreetPlayerEventArgs args)
@@ -155,7 +155,7 @@ namespace Statistics
 
 			if (TShock.Players[args.Who].IsLoggedIn)
 			{
-				database.UpdateTime(TShock.Players[args.Who].UserID, TimeCache[args.Who]);
+				database.UpdateTime(TShock.Players[args.Who].User.ID, TimeCache[args.Who]);
 				TimeCache[args.Who] = 0;
 			}
 		}
