@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using TShockAPI;
@@ -147,7 +147,7 @@ namespace Statistics
 				if (index == 3)
 					lineColor = Color.OrangeRed;
 
-				if (string.Equals(hsName, player.UserAccountName, StringComparison.CurrentCultureIgnoreCase))
+				if (string.Equals(hsName, player.User.Name, StringComparison.CurrentCultureIgnoreCase))
 					lineColor = Color.White;
 
 				if (!string.IsNullOrEmpty(hsName))
