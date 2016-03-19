@@ -278,10 +278,9 @@ namespace Statistics
 							TShock.Config.MySqlPassword
 							)
 					};
-				}
 				catch (MySqlException x)
 				{
-					LogError(x.ToString());
+					TShock.Log.Error(x.ToString());
 					throw new Exception("MySQL not setup correctly.");
 				}
 			}
@@ -292,9 +291,5 @@ namespace Statistics
 			return db;
 		}
 
-        private static void LogError(string v)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
