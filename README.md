@@ -20,3 +20,5 @@ Example /info [flag] <player name>
 statistics.root 
 
 [TStats](https://tshock.co/xf/index.php?resources/tstats.151/)
+
+[Player Statistics | TShock for Terraria](https://tshock.co/xf/index.php?resources/player-statistics.137/)
